@@ -1,4 +1,7 @@
 # linebreak
+
+This is a fork of [linebreak](https://github.com/foliojs/linebreak).
+
 An implementation of the Unicode Line Breaking Algorithm (UAX #14)
 
 > Line breaking, also known as word wrapping, is the process of breaking a section of text into lines such that it will fit in the
@@ -9,7 +12,7 @@ An implementation of the Unicode Line Breaking Algorithm (UAX #14)
 
 This is a JavaScript implementation of the [Unicode Line Breaking Algorithm](http://www.unicode.org/reports/tr14/#SampleCode) for Node.js
 (and browsers I guess). Currently supports Unicode version 13. It is used by [PDFKit](http://github.com/devongovett/pdfkit/) for
-line wrapping text in PDF documents, but since the algorithm knows nothing about the actual visual appearance or layout of text, 
+line wrapping text in PDF documents, but since the algorithm knows nothing about the actual visual appearance or layout of text,
 it could be used for other things as well.
 
 ## Installation
@@ -21,21 +24,21 @@ You can install via npm
 ## Example
 
 ```javascript
-var LineBreaker = require('linebreak');
+var LineBreaker = require("linebreak");
 
-var lorem = 'lorem ipsum...';
+var lorem = "lorem ipsum...";
 var breaker = new LineBreaker(lorem);
 var last = 0;
 var bk;
 
-while (bk = breaker.nextBreak()) {
+while ((bk = breaker.nextBreak())) {
   // get the string between the last break and this one
   var word = lorem.slice(last, bk.position);
   console.log(word);
 
   // you can also check bk.required to see if this was a required break...
   if (bk.required) {
-    console.log('\n\n');
+    console.log("\n\n");
   }
 
   last = bk.position;
@@ -47,11 +50,11 @@ while (bk = breaker.nextBreak()) {
 In order to use the library, you shouldn't need to know this, but if you're interested in
 contributing or fixing bugs, these things might be of interest.
 
-* The `src/classes.js` file is automatically generated from `LineBreak.txt` in the Unicode
+- The `src/classes.js` file is automatically generated from `LineBreak.txt` in the Unicode
   database by `src/generate_data.js`. It should be rare that you need to run this, but
   you may if, for instance, you want to change the Unicode version.
 
-* You can run the tests using `npm test`. They are written using `mocha`, and generated from
+- You can run the tests using `npm test`. They are written using `mocha`, and generated from
   `LineBreakTest.txt` from the Unicode database, which is included in the repository for performance
   reasons while running them. About 50 of the over 7600 tests are currently skipped due to
   implementation differences. It appears that some of the tests may be wrong or use different

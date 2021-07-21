@@ -1,2 +1,7 @@
 .github/
 node_modules/
+dist
+.cache
+.npmrc
+docker-compose.yml
+Dockerfile*
