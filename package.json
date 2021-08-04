@@ -1,6 +1,6 @@
 {
   "name": "@toddoglethorpe/linebreak",
-  "version": "1.0.2",
+  "version": "1.0.9",
   "description": "An implementation of the Unicode Line Breaking Algorithm (UAX #14), forked from foliojs/linebreak",
   "repository": {
     "type": "git",
@@ -24,18 +24,24 @@
   },
   "homepage": "https://github.com/toddoglethorpe/linebreak",
   "dependencies": {
+    "@swc/helpers": "^0.2.12",
     "base64-js": "1.3.1",
     "unicode-trie": "^2.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.8",
+    "@babel/preset-env": "^7.14.9",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-static-fs": "^3.0.0",
     "mocha": "^7.0.1",
-    "parcel-bundler": "^1.12.5",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "webpack": "^5.45.1",
+    "webpack-cli": "^4.7.2"
   },
   "scripts": {
     "test": "mocha --reporter landing",
     "prepublishOnly": "npm run build",
-    "build": "parcel build --out-dir dist --out-file index.js --no-minify --target browser src/linebreaker.js"
+    "build": "webpack"
   },
   "main": "dist/index.js"
 }
